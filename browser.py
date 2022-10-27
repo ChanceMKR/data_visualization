@@ -4,8 +4,8 @@ import plotly.express as px
 import plotly.io as pio
 import os
 pio.renderers.default = "browser"
-
-os.chdir("/Users/chance/Desktop/데이터시각화")
+now = os.getcwd()
+os.chdir(now)
 passengers = pd.read_csv("./data/AirPassengers.csv",
                          header = 0)
 passengers.head()
