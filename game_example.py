@@ -1,8 +1,12 @@
-import os 
+import os
 import numpy as np
 os.chdir("/Users/chance/Desktop/Coding/data_visualization")
 
+from data_processing.read_data2 import read_fun2
 from data_processing.read_data import read_fun
+
+
+dau = read_fun2(path2 = "dau")
 
 dau = read_fun(path = "./data/game_user_data",
                folder = "dau",

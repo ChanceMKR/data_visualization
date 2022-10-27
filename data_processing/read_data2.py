@@ -11,10 +11,10 @@ os.listdir(path)
 
 data_list = []
 
-def read_data(path2):
+def read_fun2(path2):
     path = path1 + path2 + path3
     for i in os.listdir(path):
-        folder = path + "/" + i + "data.tsv"
+        folder = path + "/" + i + "/data.tsv"
         data = pd.read_table(folder, sep="/")
         data_list.append(data)
     
