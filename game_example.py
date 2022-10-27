@@ -2,21 +2,20 @@ import os
 import numpy as np
 os.chdir("/Users/chance/Desktop/Coding/data_visualization")
 
-from data_processing.read_data2 import read_fun2
 from data_processing.read_data import read_fun
-
-
-dau = read_fun2(path2 = "dau")
+from data_processing.read_data2 import read_fun2
 
 dau = read_fun(path = "./data/game_user_data",
                folder = "dau",
                subfolder = "game-01")
 
+dau2 = read_fun2(path2 = "dau")
 
 dpu = read_fun(path = "./data/game_user_data",
                folder = "dpu",
                subfolder = "game-01")
 
+dau2.head()
 dau.head()
 dau.tail()
 dpu.head()
