@@ -78,3 +78,10 @@ axes.scatter(mtcars.wt,
              depthshade = False)
 
 
+plt.scatter(orange_dat.age, orange_dat.circumference)
+x = orange_dat.age
+y = orange_dat.circumference
+X = sm.add_constant(x)
+linear_model = sm.OLS(y, X)
+res = linear_model.fit()
+res.summary()

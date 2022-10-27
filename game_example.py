@@ -1,6 +1,7 @@
 import os
 import numpy as np
-os.chdir("/Users/chance/Desktop/Coding/data_visualization")
+now = os.getcwd()
+os.chdir(now)
 
 from data_processing.read_data import read_fun
 from data_processing.read_data2 import read_fun2
@@ -44,6 +45,7 @@ data.groupby("month").payment.agg(avg = "mean",
 
 # 유저별로 각 달마다 결제한 금액
 # agg 집계함수
+# agg 함수는 열마다 다른함수를 실행 할 수 있다.
 data2 = data.groupby(["month", "user_id"]).\
     agg(log_month = ("log_date", lambda x: x.shape[0]),
         pay_month = ("payment", "mean"))
