@@ -109,7 +109,24 @@ dat = pd.DataFrame(mat)
 dat.columns = ["V" + str(i) for i in range(1, 1001)]
 dat["labels"] = labels
 
+train_dat = dat.loc[dat.labels.isin(["m4a1", "usp", "knife"]), :].copy()
+train_dat["y"] = np.where(train_dat.labels == "knife", 1, 0)
+train_dat.y
 
+train_dat.drop(columns = "labels", inplace=True)
+
+
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(solver = "liblinear", random_state=0)
+
+# 디자인 매트릭스 만들기
+X = train_dat.drop(columns = "y").values # -> array로 바꿔준다.
+y = train_dat.y.values
+
+fit_res = model.fit(X, y)
+pred_y = fit_res.predict(X)
+
+pd.crosstab(y, pred_y) # 실제 0인데 1로 예측한거 1개
 
 
 
