@@ -4,7 +4,7 @@ from pydub.playback import play
 import os
 
 os.getcwd()
-os.chdir(r"C:\Users\user\Desktop\sc\data_visualization\finalExam")
+# os.chdir(r".\finalExam")
 
 audio = AudioSegment.from_file(
     "./data/metallic-beat-short/metallic-beat-short.wav", format="wav")
