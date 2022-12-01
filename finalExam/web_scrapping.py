@@ -85,8 +85,28 @@ axes.xaxis.set_major_formatter(hm)
 
 
 #r = requests.get(r"https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=103")  # 에러 발생한다.
+r = requests.get("https://google.com")
 
+# 웹브라우저에서 접속하는 것처럼 만들기
+headers = {
+    "User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
+    }
 
+r = requests.get(r"https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=104", headers = headers)
+r.status_code
+html = BeautifulSoup(r.text, "html.parser")
+headlines = html.select("a.cluster_text_headline")
+headlines[0]
 
+headlines_text = [s.text for s in headlines]
+
+import re
+
+headlines_text[-1]
+cleaner = re.compile("\[.*\]") # . : 아무거나  * : 몇번나오든 상관 없이 
+clean_text = [cleaner.sub("", s) for s in headlines_text]  # 대괄호 안에 있는 모든 글자를 찾아서 ""로 대체한다.
+
+from konlpy.tag import Komoran
+ko = Komoran()
 
 
