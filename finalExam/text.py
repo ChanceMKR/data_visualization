@@ -74,14 +74,129 @@ z.group(2)
 re.search(r"e\w+\s", "beeeomjin eee").group(0) # -> 에러발생
 
 
+string = 'My name is Beomjin Park'
+re.search(r'(\w+)', string)
+z = re.search(r'(\w+)\s(\w+)', string)
+z.start() # 문자열에서 처음으로 match 된 단어가 몇번째에 나오냐
+z.end() # 문자열에서 처음으로 match 된 단어의 마지막
+z.start(1) # 1그룹은 My이므로 0, 2 나옴
+z.end(1)
+z.start(2)
+z.end(2)
+string[z.start(2):z.end(2)]
+
+re.findall(r'(\w+)\s(\w+)', string) # matching 되는 것들 다 찾음
+z = re.finditer(r'(\w+)\s(\w+)', string)
+# z.__next__() ## iter니까 처음 찾은 문자열 나옴 iter가 없으면 안ㄴ나옴
+# list(z)
+string = ''' Beomjin is in his 30's,
+but he still have the same looks
+from his teens to his 30's'
+'''
+z = re.finditer('his', string)
+for m in z:
+    print('The word "his" is matched at {}, {}'.format(m.start(), m.end()))
+
+string = 'abcdefg'
+re.sub('ab', 'AB', string)
+
+string = 'My name is Beomjin Park'
+re.sub(r'(\w+)\s(\w+)', 'merong', string, count=3)
+
+re.split('j', string)
+re.split("i", string)
+
+c = re.compile(r"e")
+c.search(string)
+
+c = re.compile(r"(\w+)\s(\w+)")
+c.sub("merong", string)
+
+re.findall("[n|s]", "My name is Beomjin")
+
+"\w+" # 하나이상 매칭
+"\w?" # 딱 하나 나오는거
+"\w*" # 안나와도 괜찮음
+"\w{3}" # {}안의 숫자만큼 매칭
+# 학습자료 참고!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+string = "beeeomjiiiin"
+re.sub("e+|i", "e", string)
+re.sub("e", "e", string)
+re.sub("i", "e", string)
+re.sub("e+|i{2,}", "e", string)
+re.sub("e+|i{5,}", "e", string)
+re.sub("e+|i{2}", "e", string)
+re.sub("be*|ji*", "e", string)
+
+string = "His shirt is grey"
+re.sub("grey|gray", "red", string)
+re.sub("gr(e|a)y", "red", string)
 
 
+string = "beeeomjiiiin"
+re.sub("[be]", "a", string) #[be] b, e중 하나
+re.sub("b.e.", "a", string)
+re.sub(".", "a", string)
+re.sub("[.]", "a", string)
+re.sub("^[be]", "a", string)
+re.sub("[^be]", "a", string)
+re.sub("[a-z]")
+re.sub("[A-Z]")
+re.sub("[0-9]")
+re.sub("[a-zA-z]")
+re.sub("[가-힣]")
+re.sub("[\w]")
+re.sub("[\W]")
+re.sub("[\d]")
 
 
+strings = '''
+Beomjin Park : 010-1234-5678
+SangjunMoon : 010-2345-6789
+Sion Park:010-4321-1234
+Younghee Ki : 01056561243
+'''
+
+import pandas as pd
+import re
+"([A-Z][a-z]+\s*[A-z][a-z]+)s*:\s*([0-9]+-\*[0-9]+)"
+
+'''
+([A-Z][a-z]+\s*[A-z][a-z]+)
+s*:\s*
+([0-9]+-\*[0-9]+)
+
+'''
+z = re.compile(
+    '''
+    ([A-Z][a-z]+\s*[A-z][a-z]+)
+    s*:\s*
+    ([0-9]+-\*[0-9]+)
+
+    ''', re.VERBOSE  # \n 제거
+)
+z.findall(strings)
+pd.DataFrame(a, columns = ["name", "phone number"]) #시험문제 내시겠다
 
 
+# 예제2 번 1, 3, 4
 
+z =  re.compile(r'''
+                ^[\w-](\.[\w-]+)*@[a-z0-9-]+(\/[a-z0-9-]+)*$
+                ''', re.VERBOSE)
 
+strings = ["bj-.__.park@gmail.kr.com",
+           "bj,park@gmail.com", 
+           "bj.par@gmail.com",
+           "bj._abcd_.park@gmail.com"]
+
+pos_vec = []
+for i, string in enumerate(strings): # enumerate strings에 인덱스를 붙여준다.
+    res = z.match(string)
+    if res:
+        pos_vec.append(i)
+        
 
 
 
