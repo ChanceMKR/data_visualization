@@ -7,7 +7,7 @@ from konlpy.tag import Komoran
 import matplotlib.pyplot as plt
 import matplotlib
 from selenium import webdriver
-from PyKomoran import *
+import io
 
 matplotlib.rcParams['font.family'] ='Malgun Gothic'
 matplotlib.rcParams['axes.unicode_minus'] =False
@@ -57,7 +57,7 @@ flags_image = []
 for i in range(0, len(flags_url)):
     b = url + cleaner.sub("", flags_url[i])
     rr = requests.get(b)
-    img = Image.open(BytesIO(rr.content))
+    img = Image.open(io.BytesIO(rr.content))
     flags_image.append(img)
 
 flags_image[10].show()

@@ -1,5 +1,8 @@
 import pandas as pd
+import numpy as np
 import re
+
+
 
 re.search(r"[kr, mkr]", "chanceee mkrkr")
 re.search(r"a.", "chanceee mkrkr")
@@ -31,3 +34,23 @@ z = re.compile(r'''
 a = pd.DataFrame(z.findall(strings))
 a.columns = ["name", "phone number"]
 a
+
+
+strings = ["My", "name", "is", "Seongchan", "Kim"]
+" ".join(stringss)
+LETTERS = list(string.ascii_uppercase)
+letters = list(string.ascii_lowercase) 
+list(zip(LETTERS, letters))
+
+["-".join([i, j]) for i, j in zip(LETTERS, letters)]
+
+"afeubauvwebuawfibjdksabhquwevb".count("b")
+
+"KSCKSCKSC".replace("SC", "sc")
+"KSC".find("S")
+
+
+
+
+
+

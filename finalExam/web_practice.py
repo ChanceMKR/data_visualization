@@ -6,7 +6,10 @@ import requests
 import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from konlpy.tag import Komoran
 import string
+from PIL import Image
+import io
 
 matplotlib.rcParams['font.family'] ='Malgun Gothic'
 matplotlib.rcParams['axes.unicode_minus'] =False
@@ -25,19 +28,30 @@ for s in soup.select(r"span.tx"):
     print(s.text)
     
 
+r = requests.get(r"https://comic.naver.com/webtoon/weekday")
+r.status_code
+html = BeautifulSoup(r.text, "html.parser")
+html.select(r"a.title")[12].text
 
-##############################
-strings = ["My", "name", "is", "Seongchan", "Kim"]
-" ".join(stringss)
-LETTERS = list(string.ascii_uppercase)
-letters = list(string.ascii_lowercase) 
-list(zip(LETTERS, letters))
 
-["-".join([i, j]) for i, j in zip(LETTERS, letters)]
+r = requests.get(r"https://www.youtube.com/watch?v=Wdpw6idowII")
+r.status_code
+BeautifulSoup(r.text, "html.parser")
 
-"afeubauvwebuawfibjdksabhquwevb".count("b")
 
-"KSCKSCKSC".replace("SC", "sc")
-"KSC".find("S")
+r = requests.get(r"https://comic.naver.com/webtoon/weekday")
+r.status_code
+html = BeautifulSoup(r.text, "html.parser")
+a = html.select(r"div.thumb>a>img")
 
+
+thumb_image = []
+for i in a:
+    url = i.attrs["src"]
+    img = Image.open(io.BytesIO(requests.get(url).content))
+    thumb_image.append(img)
+    
+thumb_image[10].show()
+    
+    
 

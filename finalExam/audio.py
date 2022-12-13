@@ -4,7 +4,6 @@ from pydub.playback import play
 import os
 
 os.getcwd()
-# os.chdir(r".\finalExam")
 
 audio = AudioSegment.from_file(
     "./data/metallic-beat-short/metallic-beat-short.wav", format="wav")
@@ -14,14 +13,14 @@ play(audio)
 audio.frame_rate
 audio.sample_width
 2**16/2
-audio.channels
+audio.channels 
 
 x = audio.get_array_of_samples()
 x
 
 import matplotlib.pyplot as plt
 plt.plot(x, linewidth=0.25)
- 
+
 len(x) / 2 / 2 
 44100 * 2 * 2
 

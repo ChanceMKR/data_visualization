@@ -9,7 +9,7 @@ html = r.text
 print(html)
 
 import re
-remove_escape = re.compile(r'\r|\n|\t')
+remove_escape = re.come(r'\r|\n|\t')
 html_clean = remove_escape.sub(' ', html)
 
 z = re.findall('<(div class="p-note user-profile)([^>]+)>', html_clean)
