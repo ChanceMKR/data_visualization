@@ -7,6 +7,7 @@ from konlpy.tag import Komoran
 import matplotlib.pyplot as plt
 import matplotlib
 from selenium import webdriver
+from PyKomoran import *
 
 matplotlib.rcParams['font.family'] ='Malgun Gothic'
 matplotlib.rcParams['axes.unicode_minus'] =False
