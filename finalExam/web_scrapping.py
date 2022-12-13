@@ -106,7 +106,3 @@ headlines_text[-1]
 cleaner = re.compile("\[.*\]") # . : 아무거나  * : 몇번나오든 상관 없이 
 clean_text = [cleaner.sub("", s) for s in headlines_text]  # 대괄호 안에 있는 모든 글자를 찾아서 ""로 대체한다.
 
-from konlpy.tag import Komoran
-ko = Komoran()
-
-

@@ -129,11 +129,12 @@ from sklearn.cluster import KMeans
 kmeans = KMeans(n_clusters = 10, # 클러스터가 커질수록 원본이미지와 비슷해진다.
                 max_iter=10, n_init=1)
 
-res = kmeans.fit(X) 
+res = kmeans.fit(X)
 centroids = res.cluster_centers_
 compressed_X = (255 * centroids[res.labels_, :]).astype(np.uint8).reshape((w, h, d))
 compressed_image = Image.fromarray(compressed_X)
 compressed_image.show()
 compressed_image.save(r"./image data analysis data/comp_Cat.png")
+
 
 

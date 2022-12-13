@@ -20,16 +20,16 @@ x = audio.get_array_of_samples()
 x
 
 import matplotlib.pyplot as plt
-plt.plot(x, lineworth=0.25)
+plt.plot(x, linewidth=0.25)
  
 len(x) / 2 / 2 
 44100 * 2 * 2
 
-boost_audio = audio + 10
+boost_audio = audio + 20
 play(boost_audio)
 play(audio)
 
-y = boost_audio.get_array_of_samples
+y = boost_audio.get_array_of_samples()
 plt.plot(y, linewidth=0.25)
 plt.plot(x, linewidth=0.25)
 
@@ -87,7 +87,7 @@ audio_list = []
 label_list = []
 for file in folder:
     try:
-        audio = AudioSegment.from_file(r"./data\THP - Gun Kit\Gun Sound Effect/" + file, format="wav")
+        audio = AudioSegment.from_file(r"./data/THP - Gun Kit/Gun Sound Effect/" + file, format="wav")
         x = audio.get_array_of_samples()
         feature = np.abs(np.fft.fft(x, n=1000))
         audio_list.append(feature)
@@ -127,7 +127,4 @@ fit_res = model.fit(X, y)
 pred_y = fit_res.predict(X)
 
 pd.crosstab(y, pred_y) # 실제 0인데 1로 예측한거 1개
-
-
-
 

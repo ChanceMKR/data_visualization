@@ -2,7 +2,7 @@ import string
 import re
 
 
-strings = ["My", "name", "is", "Seongchan", "Kim"]
+strings = ["My", "name", "is", "Chance"]
 
 # 연결하기
 "".join(strings)
@@ -19,13 +19,16 @@ list(zip(LETTERS, letters))
 ("a"*3 + "b"*2).count("b")
 ("a"*3 + "b"*2).count("a", 1, 5)
 
+("chance").count("c")
+("chance").count("c", 1, 5)
 
-"Beomjine".replace("e", "a")
-"Beomjine".find("e") # 처음으로 나타내는 위치
-"Beomjine".find("a") # 없으면 -1 반환
 
-"Beomjin".index("e") # find랑 비슷하게 동작
-"Beomjin".index("a") # -> 없으면 에러 발생
+"chance".replace("c", "s")
+"chance".find("a") # 처음으로 나타내는 위치
+"chance".find("b") # 없으면 -1 반환
+
+"chance".index("a") # find랑 비슷하게 동작
+"chance".index("b") # -> 없으면 에러 발생
 
 try:
     "Beomjin".index("a")
@@ -38,7 +41,7 @@ except:
 "Beomjine".rfind("e") # rfind는 뒤에서부터 숫자를 센다.
 "Beomjine".rindex("e")
 
-"Beomjine, Dayeong, Sihyeon".split(", ")
+"My name is Chance".split(" ")
 "  a  ".strip()
 "a b a b a".strip("a") # 앞과 뒤에만 지워준다.
 
@@ -198,6 +201,6 @@ for i, string in enumerate(strings): # enumerate strings에 인덱스를 붙여�
         pos_vec.append(i)
         
 
-
+ 
 
 
