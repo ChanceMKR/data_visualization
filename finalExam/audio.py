@@ -24,7 +24,7 @@ x
 
 plt.plot(x, linewidth=0.25)
 
-len(x) / 2 / 2 
+len(x) / 2 / 2
 44100 * 2 * 2
 
 boost_audio = audio + 20
@@ -62,7 +62,7 @@ play(my_sound)
 
 x = audio.get_array_of_samples()
 x[:10]
-dct = np.fft.fft(x, n = 1000) 
+dct = np.fft.fft(x, n = 1000)
 dct  # j는 복소수
 
 dct2 = np.abs(dct)
@@ -76,8 +76,8 @@ axes[1].set_title("Frequency domain")
 axes[0].set_xlabel("Time")
 axes[1].set_xlabel("Freq") # -> 이걸 가지고 분류한다
 
-gun = AudioSegment.from_file(r"./data\THP - Gun Kit\Gun Sound Effect/ak47-1.wav", format="wav")
-knife = AudioSegment.from_file(r"./data\THP - Gun Kit\Gun Sound Effect/knife_hit1.wav", format="wav")
+gun = AudioSegment.from_file(r"./data/THP - Gun Kit/Gun Sound Effect/ak47-1.wav", format="wav")
+knife = AudioSegment.from_file(r"./data/THP - Gun Kit/Gun Sound Effect/knife_hit1.wav", format="wav")
 gun_x = gun.get_array_of_samples()
 knife_x = knife.get_array_of_samples()
 gun_dct = np.abs(np.fft.fft(gun_x, n=1000))
@@ -110,6 +110,7 @@ label_list
 
 r = re.compile("[_|-]")
 labels = [r.split(s)[0] for s in label_list]
+
 
 mat = np.vstack(audio_list) # -> 행렬을 만들어준다.
 mat.shape
