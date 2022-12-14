@@ -29,7 +29,7 @@ soup.find_all("div", attrs= {"class":"p-note"})
 repos = soup.find_all("span", attrs= {"class":"repo"})
 repos[0].text
 repos[0].contents
-[s.text for s in repos]
+[s.text for s in repos
 
 # attribute가 class일때만 가능 ( tag.class > 하위 tag)
 soup.select(r"div.user-profile-bio > div")[0].text

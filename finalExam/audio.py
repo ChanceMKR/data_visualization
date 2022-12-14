@@ -38,20 +38,27 @@ plt.plot(x, linewidth=0.25)
 boost_audio.export("./data/boost_audio.wav", format="wav")
 
 
-x = np.linspace(0, 4*np.pi, num=44100*2*2)
+#noise 만들기
+x = np.linspace(0, 4 * np.pi, num = 44100*2*2)
 y = np.sin(x)
 plt.plot(y)
-noise = np.random.uniform(-0.3, 0.3, 44100*2*2)
-plt.plot(x, y)
 
-y = (np.sin(x) + noise)*2**15
+#noise = np.random.uniform(-0.3, 0.1, 44100 * 2 *2)  
+noise = np.random.uniform(-0.3, 0.3, 44100 * 2 *2)
+#noise = np.random.uniform(-0.3, 0.8, 44100 * 2 *2)
+y = y + noise
+plt.plot(x,y)
 
-my_sound = AudioSegment(np.int16(y).tobytes(),
+#오디오 값들 = 정수 : 정수로 만들어줄 것
+#+-고려하여 16bit이나 15곱해줌
+y = y * 2**15
+plt.plot(x,y)
+my_sound = AudioSegment(np.int16(y).tobytes(), #tobytes() : 컴퓨터가 인식할 수 있는 byte로 바꿔줌
                         frame_rate = 44100,
                         sample_width = 2,
-                        channels=2)
-
+                        channels = 2)
 play(my_sound)
+
 
 x = audio.get_array_of_samples()
 x[:10]
