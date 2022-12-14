@@ -4,7 +4,7 @@ import os
 os.getcwd()
 
 #과금 안한 유져들 payment = 0으로 처리까지 한 데이터
-data = pd.read_csv(r"./finalExam/data/dau_dpu.csv")
+data = pd.read_csv(r"./data/dau_dpu.csv")
 data.head()
 
 #유져별 월별 payment > 0보다 큰 사람들

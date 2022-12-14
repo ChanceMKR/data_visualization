@@ -1,19 +1,25 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import requests
+import re
+from bs4 import BeautifulSoup
+
+import os 
+
 # 1122
 # web scraping
-import os 
-os.chdir(r"C:\Users\user\Desktop\sc\data_visualization")
-import requests
+
 r = requests.get('https://github.com/bbeomjin')
 r.status_code ## 200이라고 나오면 제대로 된 것
 html = r.text
 print(html)
 
-import re
 remove_escape = re.come(r'\r|\n|\t')
 html_clean = remove_escape.sub(' ', html)
 
 z = re.findall('<(div class="p-note user-profile)([^>]+)>', html_clean)
-from bs4 import BeautifulSoup
 r = requests.get('https://github.com/bbeomjin')
 html = r.text
 soup = BeautifulSoup(html, 'html.parser')
@@ -48,8 +54,6 @@ names = [s.text for s in names]
 # [float(s.text) for s in changes]
 changes = [-float(c.text)if rf.text == "하락" else float(c.text)  for c, rf in zip(changes, rise_fall)]
 
-import pandas as pd
-import numpy as np
 market_index = pd.DataFrame({"name" : names,
                              "values" : values,
                              "changes" : changes})
@@ -75,8 +79,7 @@ data2["date"] = pd.to_datetime(data2.date, format = "%Y-%m-%d %H:%M")
 data2.loc[:, data2.columns != "date"]
 data2.head()
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+
 hm = mdates.DateFormatter("%H:%M")
 
 fig, axes = plt.subplots(1, 1)
@@ -100,7 +103,6 @@ headlines[0]
 
 headlines_text = [s.text for s in headlines]
 
-import re
 
 headlines_text[-1]
 cleaner = re.compile("\[.*\]") # . : 아무거나  * : 몇번나오든 상관 없이 

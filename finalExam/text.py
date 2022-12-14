@@ -1,4 +1,5 @@
 import string
+import pandas as pd
 import re
 
 
@@ -161,8 +162,7 @@ Sion Park:010-4321-1234
 Younghee Ki : 01056561243
 '''
 
-import pandas as pd
-import re
+
 "([A-Z][a-z]+\s*[A-z][a-z]+)s*:\s*([0-9]+-\*[0-9]+)"
 
 '''

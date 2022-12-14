@@ -1,12 +1,16 @@
-from pydub import AudioSegment
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
 import pydub
+from pydub import AudioSegment
 from pydub.playback import play
+import re
 import os
 
 os.getcwd()
 
-audio = AudioSegment.from_file(
-    "./data/metallic-beat-short/metallic-beat-short.wav", format="wav")
+audio = AudioSegment.from_file("./data/metallic-beat-short/metallic-beat-short.wav", format="wav")
 
 play(audio)
 
@@ -18,7 +22,6 @@ audio.channels
 x = audio.get_array_of_samples()
 x
 
-import matplotlib.pyplot as plt
 plt.plot(x, linewidth=0.25)
 
 len(x) / 2 / 2 
@@ -34,7 +37,7 @@ plt.plot(x, linewidth=0.25)
 
 boost_audio.export("./data/boost_audio.wav", format="wav")
 
-import numpy as np
+
 x = np.linspace(0, 4*np.pi, num=44100*2*2)
 y = np.sin(x)
 plt.plot(y)
@@ -97,8 +100,7 @@ for file in folder:
 len(audio_list)
 label_list    
 
-import re
-import pandas as pd
+
 r = re.compile("[_|-]")
 labels = [r.split(s)[0] for s in label_list]
 
@@ -115,7 +117,6 @@ train_dat.y
 train_dat.drop(columns = "labels", inplace=True)
 
 
-from sklearn.linear_model import LogisticRegression
 model = LogisticRegression(solver = "liblinear", random_state=0)
 
 # 디자인 매트릭스 만들기

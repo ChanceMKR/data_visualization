@@ -35,6 +35,7 @@ counts.loc[counts>=3].plot.bar()
 
 
 driver = webdriver.Chrome(r"C:\Users\user\Downloads\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(r"/Users/chance/Desktop/Coding/chromedriver")
 driver.get(r"https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=104")
 html = BeautifulSoup(driver.page_source, "html.parser")
 body = html.select(r"dt > a")

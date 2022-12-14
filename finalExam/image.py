@@ -2,7 +2,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
+from PIL import Image
+import cv2
+from sklearn.cluster import KMeans
+
 import os
+
 os.getcwd()
 
 raccoon = mpimg.imread(r"./image data analysis data/Raccoon image.jpg")
@@ -19,7 +24,7 @@ for i in range(raccoon.shape[2]):
     axes[i].imshow(temp)
     axes[i].axis("off")
 
-from PIL import Image
+
 img = Image.open(r"./image data analysis data/Raccoon image.jpg")
 img.show()
 img.format
@@ -50,9 +55,9 @@ img_flip.show()
 
 
 img = Image.open(r"./image data analysis data/Raccoon image.jpg")
-img.convert("L").show()
+img.convert("L").show() # 흑백
 r, g, b = img.split()
-new_image = Image.merge("RGB", (r, r ,b))
+new_image = Image.merge("RGB", (g, b ,r))
 new_image.show()
 
 
@@ -73,10 +78,9 @@ sharpness.enhance(1.5).show()
 
 
 #kernel은 가운데 원소가 0,0으로 인덱싱 되어있다.
-import cv2
 raccoon = Image.open(r"./image data analysis data/Raccoon image.jpg")
-# kernel = np.ones((3,3)) / 9
-kernel = np.ones((10,10)) / 100
+kernel = np.ones((3,3)) / 9
+#kernel = np.ones((10,10)) / 100
 
 
 kernel = np.array([[0,-1,0],
@@ -114,6 +118,7 @@ raccoon_data.shape
 out = cv2.filter2D(raccoon_data, -1, kernel)
 out_img = Image.fromarray(out)
 out_img.show()
+out_img.size
 raccoon.show()
 
 
@@ -125,7 +130,7 @@ cat_data = np.array(cat)
 w, h, d = cat_data.shape
 X = cat_data.reshape((w * h, d)) / 255
 
-from sklearn.cluster import KMeans
+
 kmeans = KMeans(n_clusters = 10, # 클러스터가 커질수록 원본이미지와 비슷해진다.
                 max_iter=10, n_init=1)
 
